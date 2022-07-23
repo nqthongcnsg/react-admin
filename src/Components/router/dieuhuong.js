@@ -10,6 +10,7 @@ import Chat from "../chat/chat";
 import AddDiscount from "../discount/addDiscount";
 import Discount from "../discount/discount";
 import UpdateDiscount from "../discount/update";
+
 import Main from "../main/main";
 import Detail from "../order/detail";
 import Order from "../order/order";
@@ -33,6 +34,7 @@ class DieuHuong extends Component{
             <>
              <Router>
                     <Routes>
+                   
                         <Route path='/' element={<Main/>} />
                         <Route path='/product' element={<Product/>} />
                         <Route path='/addproduct' element={<AddProduct/>} />

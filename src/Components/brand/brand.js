@@ -6,8 +6,16 @@ const Brand =()=>{
   
     const [product, setProduct] = useState([]);
     const [searchTerm, setSearchTerm] = useState(0);
+    const [pr, setPr] = useState([]);
     useEffect(()=>{
-       
+        API.getAll().then((res)=>{
+                        if(res.data.success){
+                        
+                              
+                                setPr(res.data.result);
+                            }
+                        }
+                    ) 
            
             API.getBrand(searchTerm).then((res)=>{
                 if(res.data.success){
@@ -19,7 +27,7 @@ const Brand =()=>{
             
        
     },[searchTerm])
-    console.log(product);
+    console.log(pr);
         return(
             <>
             <div className="main-panel">
@@ -41,6 +49,7 @@ const Brand =()=>{
             return  <Item
             key={index}
             product={item}
+            pr={pr}
             
             ></Item>
         })

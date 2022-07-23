@@ -3,11 +3,18 @@ import '../Product/product.css';
 import API from "../../API";
 import Item from "./item";
 const Discount =()=>{
-  
+    const [pr, setPr] = useState([]);
     const [product, setProduct] = useState([]);
     const [searchTerm, setSearchTerm] = useState(0);
     useEffect(()=>{
-       
+        API.getAll().then((res)=>{
+            if(res.data.success){
+            
+                  
+                    setPr(res.data.result);
+                }
+            }
+        ) 
            
             API.getDiscount(searchTerm).then((res)=>{
                 if(res.data.success){
@@ -41,7 +48,7 @@ const Discount =()=>{
             return  <Item
             key={index}
             product={item}
-            
+            pr={pr}
             ></Item>
         })
      }

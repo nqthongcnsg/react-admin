@@ -296,5 +296,11 @@ insertUser=(data)=>{
     return axios.get(url);
   
   }
+getadmin=()=>{
+    const url = domain+"/admin/getall";
+    console.log(url)
+    return axios.get(url);
+  
+  }
 }
 export default new API()

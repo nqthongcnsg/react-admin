@@ -309,7 +309,7 @@ const Menu =()=>{
     </a>
     <div className="collapse" id="auth">
       <ul className="nav flex-column sub-menu">
-        <li className="nav-item"> <a className="nav-link" href="pages/samples/login.html"> Login </a></li>
+        <li className="nav-item"> <a className="nav-link" href="pages/samples/login.html"> Đăng xuất </a></li>
       </ul>
     </div>
   </li>

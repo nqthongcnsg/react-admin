@@ -3,12 +3,19 @@ import '../Product/product.css';
 import API from "../../API";
 import Item from "./item";
 const Categories =()=>{
-  
+    const [pr, setPr] = useState([]);
     const [product, setProduct] = useState([]);
     const [searchTerm, setSearchTerm] = useState(0);
     useEffect(()=>{
        
-           
+        API.getAll().then((res)=>{
+            if(res.data.success){
+            
+                  
+                    setPr(res.data.result);
+                }
+            }
+        ) 
             API.getCategories(searchTerm).then((res)=>{
                 if(res.data.success){
                 
@@ -19,7 +26,7 @@ const Categories =()=>{
             
        
     },[searchTerm])
-    console.log(product);
+    console.log(pr);
         return(
             <>
             <div className="main-panel">
@@ -41,7 +48,7 @@ const Categories =()=>{
             return  <Item
             key={index}
             product={item}
-            
+            pr={pr}
             ></Item>
         })
      }

@@ -4,16 +4,30 @@ import API from "../../API";
 const Item =(props)=>{
     console.log(props.product.idDiscount)
         const [success, setSuccess]=useState();
-  
+        const pr=props.pr;
        const deleteProduct=()=>{
-        API.deleteDiscount(props.product.idDiscount).then((res)=>{
-            if(res.data.success){
-            
-                    alert(res.data.message)
-                    setSuccess(res.data.message);
-                }
+        var flag=false;
+        for(let i=0;i<pr.length;i++){
+            if(pr[i].idDiscount==props.product.idDiscount)
+            {
+                flag=true
             }
-        )  
+        }
+        if(flag){
+            alert('Không thể xóa khi còn sản phẩm')
+        }
+        else
+        {
+            API.deleteDiscount(props.product.idDiscount).then((res)=>{
+                if(res.data.success){
+                
+                        alert(res.data.message)
+                        setSuccess(res.data.message);
+                    }
+                }
+            )  
+        }
+       
        }    
         return(<>
            
@@ -23,7 +37,7 @@ const Item =(props)=>{
      
       <td>
           <Link to={`/updateDiscount${props.product.idDiscount}`} className="icon"><span class="mdi mdi-lead-pencil"></span></Link>
-          <a href="/discount"  onClick={() => {if(window.confirm('Do you want delete Discount ?')){deleteProduct()};}}><span class="mdi mdi-window-close"></span></a>
+          <a href="/discount"  onClick={() => {if(window.confirm('Bạn muốn xóa mã giảm giá ?')){deleteProduct()};}}><span class="mdi mdi-window-close"></span></a>
       </td>
     </tr>
         </>)

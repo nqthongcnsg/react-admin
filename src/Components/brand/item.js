@@ -1,13 +1,28 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../../API";
 import {domain} from '../../constant'
 const Item =(props)=>{
-    console.log(props.product.idBrand)
+    
         const [success, setSuccess]=useState();
-  
+
+        const [product,setProduct]=useState([]);
+        const pr=props.pr;
        const deleteProduct=()=>{
-        API.deleteBrand(props.product.idBrand).then((res)=>{
+    
+        console.log(pr);
+        var flag=false;
+        for(let i=0;i<pr.length;i++){
+            if(pr[i].idBrand==props.product.idBrand)
+            {
+                flag=true
+            }
+        }
+        if(flag){
+            alert('Không thể xóa thương hiệu khi còn sản phẩm')
+        }
+        else{
+           API.deleteBrand(props.product.idBrand).then((res)=>{
             if(res.data.success){
             
                     alert(res.data.message)
@@ -15,6 +30,8 @@ const Item =(props)=>{
                 }
             }
         )  
+        }
+      
        }    
         return(<>
            

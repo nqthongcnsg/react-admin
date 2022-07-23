@@ -4,6 +4,14 @@ import React, { Component } from 'react'
 
 class Header extends Component{
     render(){
+      console.log(sessionStorage.getItem('email'))
+      const onclick=()=>{
+          
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('email');
+        window.location='/';
+
+    }
         return(
             <>
             <nav className="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
@@ -25,8 +33,8 @@ class Header extends Component{
         <div className="navbar-menu-wrapper d-flex align-items-top"> 
           <ul className="navbar-nav">
             <li className="nav-item font-weight-semibold d-none d-lg-block ms-0">
-              <h1 className="welcome-text">Good Morning, <span className="text-black fw-bold">Nguyễn Quang Thông</span></h1>
-              <h3 className="welcome-sub-text">Your performance summary this week </h3>
+              <h1 className="welcome-text">Xin chào <span className="text-black fw-bold">Nguyễn Quang Thông</span></h1>
+              <h3 className="welcome-sub-text">Chúc bạn một ngày mới tốt lành </h3>
             </li>
           </ul>
           <ul className="navbar-nav ms-auto">
@@ -164,11 +172,9 @@ class Header extends Component{
                   <p className="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
                   <p className="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
                 </div>
-                <a className="dropdown-item"><i className="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span className="badge badge-pill badge-danger">1</span></a>
-                <a className="dropdown-item"><i className="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
-                <a className="dropdown-item"><i className="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
-                <a className="dropdown-item"><i className="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-                <a className="dropdown-item"><i className="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                <a className="dropdown-item"><i className="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Trang cá nhân <span className="badge badge-pill badge-danger">1</span></a>
+                
+                <a className="dropdown-item" onClick={onclick}><i className="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Đăng Xuất</a>
               </div>
             </li>
           </ul>
